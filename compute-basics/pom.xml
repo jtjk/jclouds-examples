@@ -27,7 +27,7 @@
   <description>jclouds compute example that adds a node to a group, then executes "echo hello" on all nodes</description>
 
   <properties>
-    <jclouds.version>1.9.2</jclouds.version>
+    <jclouds.version>2.0.0-SNAPSHOT</jclouds.version>
   </properties>
 
   <dependencies>
@@ -48,7 +48,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.jclouds.labs</groupId>
-      <artifactId>google-compute-engine</artifactId>
+      <artifactId>azurecomputearm</artifactId>
       <version>${jclouds.version}</version>
     </dependency>
     <!-- note that if you want a smaller distribution
