@@ -58,7 +58,7 @@
     </dependency>
     <dependency>
       <groupId>org.apache.jclouds.labs</groupId>
-      <artifactId>azurecomputearm</artifactId>
+      <artifactId>azurecompute-arm-dev</artifactId>
       <version>${jclouds.version}</version>
     </dependency>
     <!-- note that if you want a smaller distribution
