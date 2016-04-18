@@ -92,6 +92,17 @@ To list all images (the *groupname* parameter is not used):
          /path/to/json-key.json \
          mygroup add
 
+### Azure Compute ARM
+
+    java \
+         -Dazurecompute-arm.tenantid=mytenant.onmicrosoft.com \
+         -Dazurecompute-arm.subscriptionid=mysubscriptionid \
+         -jar target/compute-basics-jar-with-dependencies.jar \
+         azurecompute-arm \
+         my-client-id \
+         my-password \
+         group add 
+
 For more information on service accounts and getting a JSON key see [here](https://developers.google.com/console/help/new/#serviceaccounts)
 
 ## License
