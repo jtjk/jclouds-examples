@@ -113,6 +113,8 @@ public class MainApp {
       String groupName = args[3];
       Action action = Action.valueOf(args[4].toUpperCase());
       boolean providerIsGCE = provider.equalsIgnoreCase("google-compute-engine");
+      System.out.println(provider);
+      boolean providerIsAzure = provider.equalsIgnoreCase("azurecompute-arm");
 
       if (action == Action.EXEC && args.length < PARAMETERS + 1)
          throw new IllegalArgumentException("please quote the command to exec as the last parameter");
@@ -137,7 +139,12 @@ public class MainApp {
       checkArgument(contains(allKeys, provider), "provider %s not in supported list: %s", provider, allKeys);
 
       LoginCredentials login = (action != Action.DESTROY) ? getLoginForCommandExecution(action) : null;
-
+      
+      if (providerIsAzure) {
+         Credentials credentials = new Credentials("jclouds", "Password1!");
+         login = LoginCredentials.fromCredentials(credentials);
+      }
+      
       ComputeService compute = initComputeService(provider, identity, credential);
 
       try {
@@ -160,7 +167,8 @@ public class MainApp {
             Statement bootInstructions = AdminAccess.standard();
 
             // to run commands as root, we use the runScript option in the template.
-            templateBuilder.options(runScript(bootInstructions));
+            if (!providerIsAzure)
+                  templateBuilder.options(runScript(bootInstructions));
 
             Template template = templateBuilder.build();
 
