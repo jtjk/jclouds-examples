@@ -170,6 +170,7 @@ public class MainApp {
             if (!providerIsAzure)
                   templateBuilder.options(runScript(bootInstructions));
 
+
             Template template = templateBuilder.build();
 
             NodeMetadata node = getOnlyElement(compute.createNodesInGroup(groupName, 1, template));
