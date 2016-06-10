@@ -92,18 +92,21 @@ To list all images (the *groupname* parameter is not used):
          /path/to/json-key.json \
          mygroup add
 
+For more information on service accounts and getting a JSON key see [here](https://developers.google.com/console/help/new/#serviceaccounts)
+
 ### Azure Compute ARM
 
-    java \
-         -Dazurecompute-arm.tenantid=mytenant.onmicrosoft.com \
-         -Dazurecompute-arm.subscriptionid=mysubscriptionid \
-         -jar target/compute-basics-jar-with-dependencies.jar \
-         azurecompute-arm \
-         my-client-id \
-         my-password \
-         group add 
+    java 
+        -Dazurecompute-arm.endpoint="https://management.azure.com/subscriptions/<subscriptionid>" \
+        -Doauth.endpoint="https://login.microsoftonline.com/<tenantid>/oauth2/token" \
+        -Djclouds.azurecompute.arm.operation.resourcegroup="jcloudsgroup" \
+        -jar target/compute-basics-jar-with-dependencies.jar \
+        azurecompute-arm \
+        my-client-id \
+        my-password \
+        jcloudsgroup add
 
-For more information on service accounts and getting a JSON key see [here](https://developers.google.com/console/help/new/#serviceaccounts)
+For more information on creating a service principal account see [here](https://github.com/jclouds/jclouds-labs/tree/master/azurecompute-arm#create-a-service-principal)
 
 ## License
 
